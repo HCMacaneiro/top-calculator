@@ -3,3 +3,28 @@
     padding: 0;
     box-sizing: border-box;
 }
+
+#calculator-div {
+    display: flex;
+    width: 256px;
+    height: 320px;
+    flex-wrap: wrap;
+    background-color: lightgray;
+}
+
+#display {
+    background-color: white;
+    border: 1px solid black;
+    height: 64px;
+    width: 256px;
+}
+
+#btns-div {
+    height: 100%;
+    width: 100%;
+
+}
+
+button {
+    padding: 16px 20px;
+}
