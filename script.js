@@ -1,8 +1,20 @@
-let num1 = 0;
-let num2 = 0;
+let num1;
+let num2;
 let operator;
 
 
+
+const calcButtons = document.querySelectorAll(".calc-button");
+calcButtons.forEach(btn => {
+    document.addEventListener("click", e => {
+        let selected = e.target.innerText;
+        populateDisplay(selected);
+    })
+})
+
+
+function populateDisplay(selectedBtn) {
+}
 
 function sum(num1, num2) {
     return num1 + num2;
