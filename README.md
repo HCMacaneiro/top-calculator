@@ -1,11 +1,11 @@
-# 🧮 On-Screen Calculator Project  
+# :1234: On-Screen Calculator Project  
 
 This project is part of **The Odin Project's** curriculum, where I combined everything I’ve learned so far to build a fully functional on-screen calculator! 🚀  
 
 ## 💡 Consolidated Knowledge  
 
 - ✨ Writing dynamic, interactive logic with **JavaScript**.  
-- 🎨 Crafting sleek, responsive designs using **CSS**.  
+- 🎨 Aligning items in diverse layouts using **CSS**.  
 - 🛠️ Structuring the interface with clean and semantic **HTML**.  
 
 ## 🎯 Features  
