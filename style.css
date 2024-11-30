@@ -18,6 +18,11 @@
     border-radius: 10px 10px 0 0;
     height: 64px;
     width: 256px;
+    font-size: large;
+    text-align: right;
+    vertical-align:bottom;
+    padding-right: 10px;
+    line-height: 64px;
 }
 
 #btns-div {
@@ -36,4 +41,9 @@
     vertical-align: middle;
     line-height: 64px;
     border: 1px solid black;
+}
+
+.calc-button:hover {
+    background-color: gray;
+    cursor: pointer;
 }
