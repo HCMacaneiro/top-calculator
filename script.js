@@ -24,20 +24,14 @@ function populateDisplay(selectedBtn) {
         return;
     }
     // Input operator
-    else if (isNaN(parsedBtn)) {
-        if (typeof num1 !== "undefined" && typeof num2 == "undefined") {
-            if (selectedBtn == "+" || selectedBtn == "-" || selectedBtn == "%" || selectedBtn == "x") {
-                operator = selectedBtn;
-                display.innerText += ` ${operator}`;
-                return;
-            }
-            else {
-                alert("Select a valid operator.");
-                return;
-            }
+    else if (isNaN(parsedBtn) && typeof num1 !== "undefined" && typeof num2 == "undefined" && typeof operator == "undefined") {
+        if (selectedBtn == "+" || selectedBtn == "-" || selectedBtn == "/" || selectedBtn == "x") {
+            operator = selectedBtn;
+            display.innerText += ` ${operator}`;
+            return;
         }
         else {
-            alert("Select a valid input.");
+            alert("Select a valid operator.");
             return;
         }
     }
@@ -52,27 +46,24 @@ function populateDisplay(selectedBtn) {
             else {
                 num1 += `${selectedBtn}`;
                 display.innerText = `${num1}`;
-                return;
             }
         }
-        else {
-            if (typeof num2 == "undefined") {
-                num2 = selectedBtn;
-                display.innerText += ` ${num2}`;
-                return;
+        else if (typeof operator !== "undefined" && typeof num2 == "undefined") {
+            num2 = selectedBtn;
+            display.innerText += ` ${num2}`;
+            return
             }
             else {
                 num2 += `${selectedBtn}`;
                 display.innerText = `${num1} ${operator} ${num2}`;
-                return;
+                return
             }
-        }
     }
     // Result
     else if (typeof num1 !== "undefined" && typeof num2 !== "undefined" && typeof operator !== "undefined") {
-        if (selectedBtn == "=") {
-            let parsedNum1 = parsedInt(num1);
-            let parsedNum2 = parsedInt(num2);
+        if (selectedBtn == "=" || selectedBtn == "+" || selectedBtn == "-" || selectedBtn == "/" || selectedBtn == "x") {
+            let parsedNum1 = parseInt(num1, 10);
+            let parsedNum2 = parseInt(num2, 10);
             let result;
             switch(operator) {
                 case "+":
@@ -84,7 +75,7 @@ function populateDisplay(selectedBtn) {
                 case "x":
                     result = multiply(parsedNum1, parsedNum2);
                     break;
-                case "%":
+                case "/":
                     result = division(parsedNum1, parsedNum2);
                     break;
                 default:
