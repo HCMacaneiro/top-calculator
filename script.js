@@ -3,10 +3,10 @@ let num2;
 let operator;
 
 
-
+const display = document.querySelector("#display");
 const calcButtons = document.querySelectorAll(".calc-button");
 calcButtons.forEach(btn => {
-    document.addEventListener("click", e => {
+    btn.addEventListener("click", e => {
         let selected = e.target.innerText;
         populateDisplay(selected);
     })
@@ -14,6 +14,90 @@ calcButtons.forEach(btn => {
 
 
 function populateDisplay(selectedBtn) {
+    let parsedBtn = parseInt(selectedBtn, 10);
+    // Clear display
+    if(isNaN(parsedBtn) && selectedBtn == "C") {
+        display.innerText = "";
+        num1 = undefined;
+        num2 = undefined;
+        operator = undefined;
+        return;
+    }
+    // Input operator
+    else if (isNaN(parsedBtn)) {
+        if (typeof num1 !== "undefined" && typeof num2 == "undefined") {
+            if (selectedBtn == "+" || selectedBtn == "-" || selectedBtn == "%" || selectedBtn == "x") {
+                operator = selectedBtn;
+                display.innerText += ` ${operator}`;
+                return;
+            }
+            else {
+                alert("Select a valid operator.");
+                return;
+            }
+        }
+        else {
+            alert("Select a valid input.");
+            return;
+        }
+    }
+    // Input numbers
+    else if(!isNaN(parsedBtn)) {
+        if(typeof operator == "undefined") {
+            if (typeof num1 == "undefined") {
+                num1 = selectedBtn;
+                display.innerText = num1;
+                return;
+            }
+            else {
+                num1 += `${selectedBtn}`;
+                display.innerText += `${num1}`;
+                return;
+            }
+        }
+        else {
+            if (typeof num2 == "undefined") {
+                num2 = selectedBtn;
+                display.innerText += ` ${num2}`;
+                return;
+            }
+            else {
+                num2 += `${selectedBtn}`;
+                display.innerText += ` ${num2}`;
+                return;
+            }
+        }
+    }
+    // Result
+    else if (typeof num1 !== "undefined" && typeof num2 !== "undefined" && typeof operator !== "undefined") {
+        if (selectedBtn == "=") {
+            let parsedNum1 = parsedInt(num1);
+            let parsedNum2 = parsedInt(num2);
+            let result;
+            switch(operator) {
+                case "+":
+                    result = sum(parsedNum1, parsedNum2);
+                    break;
+                case "-":
+                    result = subtract(parsedNum1, parsedNum2);
+                    break;
+                case "x":
+                    result = multiply(parsedNum1, parsedNum2);
+                    break;
+                case "%":
+                    result = division(parsedNum1, parsedNum2);
+                    break;
+                default:
+                    break;
+            }
+            num1 = undefined;
+            num2 = undefined;
+            operator = undefined;
+            display.innerText = result;
+            return;
+        }
+    }
+
 }
 
 function sum(num1, num2) {
