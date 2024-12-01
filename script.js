@@ -61,7 +61,7 @@ function populateDisplay(selectedBtn) {
     }
     // Result
     else if (typeof num1 !== "undefined" && typeof num2 !== "undefined" && typeof operator !== "undefined") {
-        if (selectedBtn == "=" || selectedBtn == "+" || selectedBtn == "-" || selectedBtn == "/" || selectedBtn == "x") {
+        if (selectedBtn == "=") {
             let parsedNum1 = parseInt(num1, 10);
             let parsedNum2 = parseInt(num2, 10);
             let result;
@@ -87,6 +87,32 @@ function populateDisplay(selectedBtn) {
             display.innerText = result;
             return;
         }
+        else if (selectedBtn == "+" || selectedBtn == "-" || selectedBtn == "/" || selectedBtn == "x") {
+        let parsedNum1 = parseInt(num1, 10);
+        let parsedNum2 = parseInt(num2, 10);
+        let result;
+        switch(operator) {
+            case "+":
+                result = sum(parsedNum1, parsedNum2);
+                break;
+            case "-":
+                result = subtract(parsedNum1, parsedNum2);
+                break;
+            case "x":
+                result = multiply(parsedNum1, parsedNum2);
+                break;
+            case "/":
+                result = division(parsedNum1, parsedNum2);
+                break;
+            default:
+                break;
+        }
+        num1 = result;
+        num2 = undefined;
+        operator = selectedBtn;
+        display.innerText = `${num1} ${operator}`;
+        return;
+    }
     }
 
 }
