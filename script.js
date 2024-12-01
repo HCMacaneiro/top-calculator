@@ -51,7 +51,7 @@ function populateDisplay(selectedBtn) {
             }
             else {
                 num1 += `${selectedBtn}`;
-                display.innerText += `${num1}`;
+                display.innerText = `${num1}`;
                 return;
             }
         }
@@ -63,7 +63,7 @@ function populateDisplay(selectedBtn) {
             }
             else {
                 num2 += `${selectedBtn}`;
-                display.innerText += ` ${num2}`;
+                display.innerText = `${num1} ${operator} ${num2}`;
                 return;
             }
         }
